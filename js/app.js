@@ -72,6 +72,55 @@ function summarizeData() {
   detail.appendChild(ul);
 }
 
+function showChart() {
+  var labels = [];
+  var voteData = [];
+  var colors = [];
+
+  for (var i = 0; i < Item.allItems.length; i++) {
+    Item.allItems[i].pct = Math.round( (Item.allItems[i].clickCount / Item.allItems[i].itemDisplay) * 100);
+  }
+
+  Item.allItems.sort(function(a, b) {
+    return b.pct - a.pct;
+  });
+
+  for (i = 0; i < Item.allItems.length; i++) {
+    labels.push(Item.allItems[i].itemName);
+    voteData.push(Item.allItems[i].pct);
+    var randomColor = '#' + Math.floor(Math.random() * 16777215).toString(16);
+    colors.push(randomColor);
+  }
+
+  var context = document.getElementById('chart').getContext('2d');
+  var newChart = new Chart(context, {
+    type: 'horizontalBar',
+    data: {
+      labels: labels,
+      datasets: [
+        {
+          label: 'Popularity (% of clicks)',
+          data: voteData,
+          backgroundColor: colors,
+        },
+      ],
+    },
+    options: {
+      responsive: false,
+      maintainAspectRatio: true,
+      scales: {
+        yAxes: [
+          {
+            ticks: {
+              beginAtZero: true,
+            },
+          },
+        ],
+      },
+    },
+  });
+}
+
 function newProducts(event) {
   event.preventDefault();
 
@@ -89,7 +138,7 @@ function newProducts(event) {
     randomNumber();
   } else {
     removeListener();
-    summarizeData();
+    showChart();
   }
 }
 
