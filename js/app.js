@@ -19,27 +19,30 @@ function randomItem() {
   var randomNumber = Math.floor(Math.random() * Item.allItems.length);
   imgOne.src = Item.allItems[randomNumber].imgSource;
   imgOne.alt = Item.allItems[randomNumber].itemName;
+  Item.allItems[randomNumber].itemDisplay++;
   randomNumber = Math.floor(Math.random() * Item.allItems.length);
   imgTwo.src = Item.allItems[randomNumber].imgSource;
   imgTwo.alt = Item.allItems[randomNumber].itemName;
+  Item.allItems[randomNumber].itemDisplay++;
   randomNumber = Math.floor(Math.random() * Item.allItems.length);
   imgThree.src = Item.allItems[randomNumber].imgSource;
   imgThree.alt = Item.allItems[randomNumber].itemName;
+  Item.allItems[randomNumber].itemDisplay++;
 }
 
 function newProducts(event) {
   event.preventDefault();
 
-  this.clickCount++;
+  clickCount++;
   totalClicks++;
 
   if (totalClicks < 25) {
     randomItem();
   } else {
-    console.log(totalClicks);
+    console.log('totalClicks' + totalClicks);
     for (var i = 0; i < Item.allItems.length; i++) {
-      console.log(Item.allItems[i].clickCount);
-      console.log(Item.allItems[i].itemDisplay);
+      console.log(Item.allItems[i].itemName + 'clickCount' + Item.allItems[i].clickCount);
+      console.log(Item.allItems[i].itemName + 'itemDisplay' + Item.allItems[i].itemDisplay);
     }
   }
 }
@@ -62,7 +65,7 @@ new Item('../img/pen.jpg', 'pen');
 new Item('../img/pet-sweep.jpg', 'pet-sweep');
 new Item('../img/scissors.jpg', 'scissors');
 new Item('../img/shark.jpg', 'shark');
-new Item('../img/sweep.jpg', 'sweep');
+new Item('../img/sweep.png', 'sweep');
 new Item('../img/tauntaun.jpg', 'tauntaun');
 new Item('../img/unicorn.jpg', 'unicorn');
 new Item('../img/usb.gif', 'usb');
