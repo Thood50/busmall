@@ -3,9 +3,12 @@
 var imgOne = document.getElementById('imgOne');
 var imgTwo = document.getElementById('imgTwo');
 var imgThree = document.getElementById('imgThree');
+var detail = document.getElementById('imgSection');
 var totalClicks = 0;
 
 Item.allItems = [];
+var possibleImg = [imgOne, imgTwo, imgThree];
+var randomNumbers = [];
 
 function Item(filepath, itemName) {
   this.imgSource = filepath;
@@ -15,41 +18,80 @@ function Item(filepath, itemName) {
   Item.allItems.push(this);
 }
 
-function randomItem() {
-  var randomNumber = Math.floor(Math.random() * Item.allItems.length);
-  imgOne.src = Item.allItems[randomNumber].imgSource;
-  imgOne.alt = Item.allItems[randomNumber].itemName;
-  Item.allItems[randomNumber].itemDisplay++;
-  randomNumber = Math.floor(Math.random() * Item.allItems.length);
-  imgTwo.src = Item.allItems[randomNumber].imgSource;
-  imgTwo.alt = Item.allItems[randomNumber].itemName;
-  Item.allItems[randomNumber].itemDisplay++;
-  randomNumber = Math.floor(Math.random() * Item.allItems.length);
-  imgThree.src = Item.allItems[randomNumber].imgSource;
-  imgThree.alt = Item.allItems[randomNumber].itemName;
-  Item.allItems[randomNumber].itemDisplay++;
+function randomNumber() {
+  for(var i = 0; i < possibleImg.length; i++) {
+    var randomNumberGenerator = Math.floor(Math.random() * Item.allItems.length);
+    randomNumbers.push(randomNumberGenerator);
+  }
+  if (randomNumbers[0] === randomNumbers[1]  || randomNumbers[0] === randomNumbers[2] || randomNumbers[1] === randomNumbers[2]) {
+    randomNumbers = [];
+    randomNumber();
+    return;
+  } else {
+    randomItems();
+  }
+}
+
+function randomItems() {
+  for(var i = 0; i < possibleImg.length; i++) {
+    possibleImg[i].src = Item.allItems[randomNumbers[i]].imgSource;
+    possibleImg[i].alt = Item.allItems[randomNumbers[i]].itemName;
+    Item.allItems[randomNumbers[i]].itemDisplay++;
+  }
+  randomNumbers = [];
+}
+
+function eventListener() {
+  for(var i = 0; i < possibleImg.length; i++) {
+    possibleImg[i].addEventListener('click', newProducts);
+    possibleImg[i].addEventListener('click', newProducts);
+    possibleImg[i].addEventListener('click', newProducts);
+  }
+}
+
+function removeListener() {
+  for(var i = 0; i < possibleImg.length; i++) {
+    possibleImg[i].removeEventListener('click', newProducts);
+    possibleImg[i].removeEventListener('click', newProducts);
+    possibleImg[i].removeEventListener('click', newProducts);
+  }
+}
+
+function summarizeData() {
+  var ul = document.createElement('ul');
+
+  for(var i=0; i<Item.allItems.length; i++) {
+    var li = document.createElement('li');
+    li.textContent = `
+       ${Item.allItems[i].itemName}
+       Views: ${Item.allItems[i].itemDisplay}
+       votes: ${Item.allItems[i].clickCount}
+    `;
+    ul.appendChild(li);
+  }
+  detail.appendChild(ul);
 }
 
 function newProducts(event) {
   event.preventDefault();
 
-  // clickCount++;
+  var imageName = event.target.alt;
+  for( var i=0; i<Item.allItems.length; i++) {
+    if(Item.allItems[i].itemName === imageName ) {
+      Item.allItems[i].clickCount++;
+      break;
+    }
+  }
+
   totalClicks++;
 
   if (totalClicks < 25) {
-    randomItem();
+    randomNumber();
   } else {
-    console.log('totalClicks' + totalClicks);
-    for (var i = 0; i < Item.allItems.length; i++) {
-      console.log(Item.allItems[i].itemName + 'clickCount' + Item.allItems[i].clickCount);
-      console.log(Item.allItems[i].itemName + 'itemDisplay' + Item.allItems[i].itemDisplay);
-    }
+    removeListener();
+    summarizeData();
   }
 }
-
-imgOne.addEventListener('click', newProducts);
-imgTwo.addEventListener('click', newProducts);
-imgThree.addEventListener('click', newProducts);
 
 new Item('../img/bag.jpg', 'bag');
 new Item('../img/banana.jpg', 'banana');
@@ -73,4 +115,5 @@ new Item('../img/water-can.jpg', 'water-can');
 new Item('../img/wine-glass.jpg', 'wine-glass');
 
 
-randomItem();
+randomNumber();
+eventListener();
