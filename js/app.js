@@ -33,7 +33,7 @@ function randomItem() {
 function newProducts(event) {
   event.preventDefault();
 
-  clickCount++;
+  // clickCount++;
   totalClicks++;
 
   if (totalClicks < 25) {
