@@ -23,17 +23,17 @@ function randomNumber() {
   for(var i = 0; i < possibleImg.length; i++) {
     var randomNumberGenerator = Math.floor(Math.random() * Item.allItems.length);
     randomNumbers.push(randomNumberGenerator);
+    console.log('created number ' + i);
 
     for(var k = 0; k < possibleImg.length; k++) {
-      if (randomNumbers[i] === randomNumbers[]) {
+      if ((randomNumbers.length === 2 && randomNumbers[i] === randomNumbers[0]) || (randomNumbers.length === 3 && (randomNumbers[2] === randomNumbers[0] || randomNumbers[2] === randomNumbers[1])) ||(randomNumbers[i] === lastImg[k])) {
         randomNumbers = [];
         randomNumber();
         return;
-      } else {
-        randomItems();
       }
     }
   }
+  randomItems();
 }
 
 function randomItems() {
@@ -42,6 +42,8 @@ function randomItems() {
     possibleImg[i].alt = Item.allItems[randomNumbers[i]].itemName;
     Item.allItems[randomNumbers[i]].itemDisplay++;
   }
+  lastImg = [];
+  lastImg = randomNumbers;
   randomNumbers = [];
 }
 
@@ -170,14 +172,13 @@ function addItems () {
 
 function addLocalStorage () {
   if(setItems){
-    
     Item.allItems = JSON.parse(setItems);
 
   }else{
-    
+
     addItems();
     localStorage.setItem('items', JSON.stringify(Item.allItems));
-    
+
   }
 }
 
