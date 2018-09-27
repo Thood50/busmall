@@ -1,14 +1,89 @@
+header {
+    background-image: url(../img/Header-Background.jpg);
+    background-repeat: no-repeat;
+    font-size: 100px;
+    font-weight: bold;
+    height: 250px;
+    text-align: center;
+}
+
+h1 {
+    padding-top: 50px;
+    color: white;
+    font-family: 'Notable', sans-serif;
+}
+
+h2 {
+    background-image: url(../img/Header-Background.jpg);
+    background-repeat: no-repeat;
+    height: 175px;
+    font-size: 75px;
+    font-weight: bold;
+    text-align: center;
+    padding-top: 75px;
+    color: white;
+    font-family: 'Notable', sans-serif;
+}
+
+body {
+    background-image: url(../img/grass2.jpg);
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+
+}
+
+#divOne {
+    background-image: url(../img/רקע-עצים-7.jpg);
+    /* background: white; */
+    background-repeat: no-repeat;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 50px;
+    height: 650px;
+    width: 900px;
+    border-radius: 50px;
+}
+
+#divTwo {
+    margin-left: 800px;
+}
+
+#imgSection {
+    background-image: url(../img/ipad-transparent-1.png);
+    background-repeat: no-repeat;
+    height: 1000px;
+    width: 1000px;
+    border: 5px black;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: auto;
+}
+
 #imgOne {
     width: 200px;
     height: 200px;
+    border-radius: 25px;
+    margin-left: 200px;
+    margin-right: auto;
+    margin-top: 200px;
 }
 
 #imgTwo {
     width: 200px;
     height: 200px;
+    border-radius: 25px;
+    margin-left: auto;
+    margin-right: auto;
 }
 
 #imgThree {
     width: 200px;
     height: 200px;
+    border-radius: 25px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+#chart {
+    font-size: 20px;
 }

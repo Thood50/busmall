@@ -105,6 +105,7 @@ function newProducts(event) {
     randomNumber();
   } else {
     removeListener();
+    document.getElementById('divOne').style.display = 'none';
     showChart();
     localStorage.setItem('items', JSON.stringify(Item.allItems));
     consoleLog();
@@ -171,10 +172,18 @@ function showChart() {
       responsive: false,
       maintainAspectRatio: true,
       scales: {
+        xAxes: [
+          {
+            ticks: {
+              fontSize: 40,
+            }
+          }
+        ],
         yAxes: [
           {
             ticks: {
               beginAtZero: true,
+              fontSize: 40,
             },
           },
         ],
@@ -194,4 +203,3 @@ function consoleLog () {
 addLocalStorage();
 randomNumber();
 eventListener();
-// consoleLog();
