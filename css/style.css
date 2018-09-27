@@ -32,6 +32,44 @@ body {
 
 }
 
+.left {
+    float: left;
+}
+.nav {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+.nav li {  
+    background-image: url(../img/Header-Background.jpg);
+    margin: 10px 0;
+    border: 2px solid white;
+    color: white;
+    text-align: center;
+    height: 80px;
+    width: 120px;
+    padding-top: 20px;
+    font-size: 20px;
+}
+.nav li a {
+    display: block;
+    line-height: 3em;
+    width: 75px;
+    text-decoration: none;
+}
+
+.nav li:hover
+{
+    border-radius:50%;
+}
+
+#pOne {
+    margin-left: 175px;
+    margin-top: 55px;
+    font-size: 40px;
+    font-family: 'Notable', sans-serif;
+}
+
 #divOne {
     background-image: url(../img/רקע-עצים-7.jpg);
     /* background: white; */
