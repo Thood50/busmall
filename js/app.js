@@ -156,7 +156,7 @@ function showChart() {
   }
 
   var context = document.getElementById('chart').getContext('2d');
-  var newChart = new Chart(context, {
+  var newChart = new Chart(context, { // eslint-disable-line
     type: 'horizontalBar',
     data: {
       labels: labels,
