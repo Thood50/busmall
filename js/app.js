@@ -3,10 +3,12 @@
 var imgOne = document.getElementById('imgOne');
 var imgTwo = document.getElementById('imgTwo');
 var imgThree = document.getElementById('imgThree');
+var setItems = localStorage.getItem('items');
 var totalClicks = 0;
 
 Item.allItems = [];
 var possibleImg = [imgOne, imgTwo, imgThree];
+var lastImg = [];
 var randomNumbers = [];
 
 function Item(filepath, itemName) {
@@ -21,13 +23,16 @@ function randomNumber() {
   for(var i = 0; i < possibleImg.length; i++) {
     var randomNumberGenerator = Math.floor(Math.random() * Item.allItems.length);
     randomNumbers.push(randomNumberGenerator);
-  }
-  if (randomNumbers[0] === randomNumbers[1]  || randomNumbers[0] === randomNumbers[2] || randomNumbers[1] === randomNumbers[2]) {
-    randomNumbers = [];
-    randomNumber();
-    return;
-  } else {
-    randomItems();
+
+    for(var k = 0; k < possibleImg.length; k++) {
+      if (randomNumbers[i] === randomNumbers[]) {
+        randomNumbers = [];
+        randomNumber();
+        return;
+      } else {
+        randomItems();
+      }
+    }
   }
 }
 
@@ -140,27 +145,42 @@ function newProducts(event) {
   }
 }
 
-new Item('../img/bag.jpg', 'bag');
-new Item('../img/banana.jpg', 'banana');
-new Item('../img/bathroom.jpg', 'bathroom');
-new Item('../img/boots.jpg', 'boots');
-new Item('../img/breakfast.jpg', 'breakfast');
-new Item('../img/bubblegum.jpg', 'bubblegum');
-new Item('../img/chair.jpg', 'chair');
-new Item('../img/cthulhu.jpg', 'cthulhu');
-new Item('../img/dog-duck.jpg', 'dog-duck');
-new Item('../img/dragon.jpg', 'dragon');
-new Item('../img/pen.jpg', 'pen');
-new Item('../img/pet-sweep.jpg', 'pet-sweep');
-new Item('../img/scissors.jpg', 'scissors');
-new Item('../img/shark.jpg', 'shark');
-new Item('../img/sweep.png', 'sweep');
-new Item('../img/tauntaun.jpg', 'tauntaun');
-new Item('../img/unicorn.jpg', 'unicorn');
-new Item('../img/usb.gif', 'usb');
-new Item('../img/water-can.jpg', 'water-can');
-new Item('../img/wine-glass.jpg', 'wine-glass');
+function addItems () {
+  new Item('../img/bag.jpg', 'bag');
+  new Item('../img/banana.jpg', 'banana');
+  new Item('../img/bathroom.jpg', 'bathroom');
+  new Item('../img/boots.jpg', 'boots');
+  new Item('../img/breakfast.jpg', 'breakfast');
+  new Item('../img/bubblegum.jpg', 'bubblegum');
+  new Item('../img/chair.jpg', 'chair');
+  new Item('../img/cthulhu.jpg', 'cthulhu');
+  new Item('../img/dog-duck.jpg', 'dog-duck');
+  new Item('../img/dragon.jpg', 'dragon');
+  new Item('../img/pen.jpg', 'pen');
+  new Item('../img/pet-sweep.jpg', 'pet-sweep');
+  new Item('../img/scissors.jpg', 'scissors');
+  new Item('../img/shark.jpg', 'shark');
+  new Item('../img/sweep.png', 'sweep');
+  new Item('../img/tauntaun.jpg', 'tauntaun');
+  new Item('../img/unicorn.jpg', 'unicorn');
+  new Item('../img/usb.gif', 'usb');
+  new Item('../img/water-can.jpg', 'water-can');
+  new Item('../img/wine-glass.jpg', 'wine-glass');
+}
 
+function addLocalStorage () {
+  if(setItems){
+    
+    Item.allItems = JSON.parse(setItems);
 
+  }else{
+    
+    addItems();
+    localStorage.setItem('items', JSON.stringify(Item.allItems));
+    
+  }
+}
+
+addLocalStorage();
 randomNumber();
 eventListener();
