@@ -3,6 +3,11 @@
 var imgOne = document.getElementById('imgOne');
 var imgTwo = document.getElementById('imgTwo');
 var imgThree = document.getElementById('imgThree');
+var navProduct = document.getElementById('product');
+var divOne = document.getElementById('divOne');
+var productDiv = document.getElementById('productDiv');
+var home = document.getElementById('home');
+var navChart = document.getElementById('navChart');
 var setItems = localStorage.getItem('items');
 var totalClicks = 0;
 
@@ -87,6 +92,9 @@ function eventListener() {
     possibleImg[i].addEventListener('click', newProducts);
     possibleImg[i].addEventListener('click', newProducts);
   }
+  navProduct.addEventListener('click', summarizeData);
+  home.addEventListener('click', pageRefresh);
+  navChart.addEventListener('click', showChart);
 }
 
 function newProducts(event) {
@@ -112,6 +120,8 @@ function newProducts(event) {
   }
 }
 
+
+
 function removeListener() {
   for(var i = 0; i < possibleImg.length; i++) {
     possibleImg[i].removeEventListener('click', newProducts);
@@ -120,22 +130,30 @@ function removeListener() {
   }
 }
 
-// function summarizeData() {
-//   var ul = document.createElement('ul');
+function summarizeData() {
+  document.getElementById('divOne').style.display = 'none';
+  
+  var ul = document.createElement('ul');
 
-//   for(var i=0; i<Item.allItems.length; i++) {
-//     var li = document.createElement('li');
-//     li.textContent = `
-//        ${Item.allItems[i].itemName}
-//        Views: ${Item.allItems[i].itemDisplay}
-//        votes: ${Item.allItems[i].clickCount}
-//     `;
-//     ul.appendChild(li);
-//   }
-//   detail.appendChild(ul);
-// }
+  for(var i=0; i<Item.allItems.length; i++) {
+    var li = document.createElement('li');
+    li.textContent = `
+       ${Item.allItems[i].itemName}
+       Views: ${Item.allItems[i].itemDisplay}
+       votes: ${Item.allItems[i].clickCount}
+    `;
+    ul.appendChild(li);
+  }
+  productDiv.appendChild(ul);
+}
+
+function pageRefresh() {
+  location.reload();
+}
 
 function showChart() {
+  document.getElementById('divOne').style.display = 'none';
+
   var labels = [];
   var voteData = [];
   var colors = [];

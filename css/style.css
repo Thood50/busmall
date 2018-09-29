@@ -32,6 +32,15 @@ body {
 
 }
 
+#productDiv {
+    text-align: left;
+    margin-left: 1000px;
+    padding-top: 50px;
+    font-size: 30px;
+    padding-bottom: 500px;
+    
+}
+
 .left {
     float: left;
 }
