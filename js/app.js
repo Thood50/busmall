@@ -32,26 +32,26 @@ function addLocalStorage () {
 }
 
 function addItems () {
-  new Item('../img/bag.jpg', 'bag');
-  new Item('../img/banana.jpg', 'banana');
-  new Item('../img/bathroom.jpg', 'bathroom');
-  new Item('../img/boots.jpg', 'boots');
-  new Item('../img/breakfast.jpg', 'breakfast');
-  new Item('../img/bubblegum.jpg', 'bubblegum');
-  new Item('../img/chair.jpg', 'chair');
-  new Item('../img/cthulhu.jpg', 'cthulhu');
-  new Item('../img/dog-duck.jpg', 'dog-duck');
-  new Item('../img/dragon.jpg', 'dragon');
-  new Item('../img/pen.jpg', 'pen');
-  new Item('../img/pet-sweep.jpg', 'pet-sweep');
-  new Item('../img/scissors.jpg', 'scissors');
-  new Item('../img/shark.jpg', 'shark');
-  new Item('../img/sweep.png', 'sweep');
-  new Item('../img/tauntaun.jpg', 'tauntaun');
-  new Item('../img/unicorn.jpg', 'unicorn');
-  new Item('../img/usb.gif', 'usb');
-  new Item('../img/water-can.jpg', 'water-can');
-  new Item('../img/wine-glass.jpg', 'wine-glass');
+  new Item('./img/bag.jpg', 'bag');
+  new Item('./img/banana.jpg', 'banana');
+  new Item('./img/bathroom.jpg', 'bathroom');
+  new Item('./img/boots.jpg', 'boots');
+  new Item('./img/breakfast.jpg', 'breakfast');
+  new Item('./img/bubblegum.jpg', 'bubblegum');
+  new Item('./img/chair.jpg', 'chair');
+  new Item('./img/cthulhu.jpg', 'cthulhu');
+  new Item('./img/dog-duck.jpg', 'dog-duck');
+  new Item('./img/dragon.jpg', 'dragon');
+  new Item('./img/pen.jpg', 'pen');
+  new Item('./img/pet-sweep.jpg', 'pet-sweep');
+  new Item('./img/scissors.jpg', 'scissors');
+  new Item('./img/shark.jpg', 'shark');
+  new Item('./img/sweep.png', 'sweep');
+  new Item('./img/tauntaun.jpg', 'tauntaun');
+  new Item('./img/unicorn.jpg', 'unicorn');
+  new Item('./img/usb.gif', 'usb');
+  new Item('./img/water-can.jpg', 'water-can');
+  new Item('./img/wine-glass.jpg', 'wine-glass');
 }
 
 function randomNumber() {
